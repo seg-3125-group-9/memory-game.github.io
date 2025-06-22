@@ -1,5 +1,4 @@
-/* Import a more elegant handwritten-style font if desired */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
 body {
   margin: 0;
@@ -16,14 +15,23 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative; /* this allows top-bar absolute positioning to work */
 }
 
 .title {
-  font-family: 'Pacifico', cursive;
-  font-size: 3.5rem;
+  font-family: 'Comfortaa', cursive;
+  font-size: 3.9rem;
   color: #5a1a1a;
   margin-bottom: 60px;
   text-align: center;
+}
+
+.btn.start:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 .section {
@@ -62,11 +70,13 @@ body {
 .btn.level {
   background-color: #ec6c6c;
   color: white;
+  font-family: 'Comfortaa', cursive;
 }
 
 .btn.theme {
   background-color: #e6a6a6;
   color: white;
+  font-family: 'Comfortaa', cursive;
 }
 
 .btn.start {
@@ -74,6 +84,7 @@ body {
   color: black;
   font-weight: bold;
   padding: 15px 25px;
+  font-family: 'Comfortaa', cursive;
 }
 
 .how-to-play {
@@ -94,26 +105,46 @@ body {
   }
 }
 
-
 /* Game screen styles */
 .game-screen {
   background-color: #fdeeee;
   padding: 30px;
   text-align: left;
+  position: relative;
 }
 
 .top-bar {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-family: monospace;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 10; /* ensures it stays on top */
+}
+
+.left-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 25px;
 }
 
 .timer {
-  font-size: 2.5rem;
-  color: #5a1a1a;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.right-info {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .btn.quit {
@@ -140,3 +171,26 @@ body {
   color: black !important;
 }
 
+.times-up-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh; /* fill most of the screen area */
+  text-align: center;
+  gap: 10px;
+}
+
+.times-up-message h1 {
+  font-size: 5rem;
+  color: salmon;
+  margin: 0;
+  font-weight: bold;
+}
+
+.times-up-message p {
+  font-size: 1.5rem;
+  color: #5a1a1a; /* dark brown */
+  margin: 0;
+  font-weight: bold;
+}
